@@ -86,6 +86,7 @@ cd xbmc && \
 --disable-alsa \
 --disable-hal && \
 make -j2 && \
+make install && \
 cp libxbmc.so /lib && \
 ldconfig && \
 cd xbmc && \
