@@ -39,7 +39,7 @@ RUN apt-get update && \
     apt-get -y install git openjdk-7-jre-headless supervisor
 
 # Download XBMC, pick version from github
-RUN git clone https://github.com/escoand/xbmc-server.git -b Gotham --depth=1
+RUN git clone https://github.com/sparklyballs/xbmc-server.git -b Gotham --depth=1
 
 # Add patches and xbmc-server files
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
