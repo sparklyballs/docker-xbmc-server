@@ -37,7 +37,6 @@ apt-get -y install git openjdk-7-jre-headless supervisor
 RUN git clone https://github.com/escoand/xbmc-server.git -b Gotham --depth=1 xbmc && \
 cd xbmc && \
 git remote add upstream git://github.com/xbmc/xbmc.git && \
-git checkout -b Gotham origin/Gotham && \
 git checkout Gotham && \
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Installs xbmc dependencies, configure, make, clean.
