@@ -39,17 +39,10 @@ RUN apt-get update && \
     apt-get -y install git openjdk-7-jre-headless supervisor
 
 # Download XBMC, pick version from github
-RUN git clone https://github.com/xbmc/xbmc.git -b Gotham --depth=1
+RUN git clone https://github.com/escoand/xbmc-server.git -b Gotham --depth=1
 
 # Add patches and xbmc-server files
-ADD src/5071.patch xbmc/5071.patch
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Apply patches:
-#	fixrash.diff : Fixes crashing in UPnP 
-#	wsnipex-fix-ede443716d0f3e5174674ddad8c5678691143b1b.diff : Fixes shared library compilation on gotham 
-RUN cd xbmc && \
-git apply 5071.patch
 
 # Installs xbmc dependencies, configure, make, clean.
 # Taken out of the list of dependencies: libbluetooth3. Put in the list: libssh-4 libtag1c2a libcurl3-gnutls libnfs1
