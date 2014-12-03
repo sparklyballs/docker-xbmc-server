@@ -30,9 +30,12 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 # Set Terminal to non interactive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-# Install java, git wget and supervisor
-RUN apt-get update && \
-apt-get -y install git openjdk-7-jre-headless supervisor
+# Update the system
+RUN	apt-get -q update
+RUN	apt-mark hold initscripts udev plymouth mountall
+RUN	apt-get -qy --force-yes dist-upgrade
+# Install java, git and supervisor
+RUN apt-get -y install git openjdk-7-jre-headless supervisor
 # Download XBMC, pick version from github
 RUN git clone https://github.com/escoand/xbmc-server.git -b Gotham --depth=1 xbmc
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
