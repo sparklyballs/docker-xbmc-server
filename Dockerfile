@@ -39,7 +39,7 @@ cd xbmc && \
 git remote add upstream git://github.com/xbmc/xbmc.git && \
 git remote add upstream git://github.com/xbmc/xbmc.git && \
 git checkout -b Gotham origin/Gotham && \
-git checkout Gotham && \
+git checkout Gotham
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Installs xbmc dependencies, configure, make, clean.
 # Taken out of the list of dependencies: libbluetooth3. Put in the list: libssh-4 libtag1c2a libcurl3-gnutls libnfs1
