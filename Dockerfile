@@ -34,7 +34,11 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt-get update && \
 apt-get -y install git openjdk-7-jre-headless supervisor
 # Download XBMC, pick version from github
-RUN git clone https://github.com/xbmc/xbmc.git -b Gotham --depth=1
+RUN git clone https://github.com/escoand/xbmc-server.git -b Gotham --depth=1 xbmc && \
+cd xbmc && \
+git remote add upstream git://github.com/xbmc/xbmc.git && \
+git checkout -b Gotham origin/Gotham && \
+git checkout Gotham && \
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Installs xbmc dependencies, configure, make, clean.
 # Taken out of the list of dependencies: libbluetooth3. Put in the list: libssh-4 libtag1c2a libcurl3-gnutls libnfs1
